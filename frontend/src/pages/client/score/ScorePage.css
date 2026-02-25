@@ -1,0 +1,130 @@
+/* Toàn trang */
+#score {
+    font-family: "Orbitron", sans-serif;
+}
+
+/* SUMMARY wrapper - cách table 20px */
+.score-summary-wrapper {
+    margin-bottom: 20px;
+}
+
+/* Tổng trọng số + tiến trình */
+.score-summary {
+    display: flex;
+    justify-content: space-between;
+    color: #a5f3fc;
+    font-size: 1.1rem;
+    font-weight: 500;
+    max-width: 1600px;
+    margin: 0 auto 10px auto;
+}
+
+/* Thanh năng lượng */
+.score-progress-bar {
+    position: relative;
+    width: 100%;
+    max-width: 1600px;
+    height: 34px;
+    /* tăng độ cao */
+    border-radius: 9999px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(0, 255, 255, 0.4);
+    margin: 0 auto;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.25);
+}
+
+.score-progress-segment {
+    height: 100%;
+    transition: width 0.6s ease-in-out;
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
+}
+
+.score-progress-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #a5f3fc;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+    font-size: 1rem;
+}
+
+/* Table wrapper */
+.score-table-wrapper {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    overflow-x: auto;
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    border-radius: 12px;
+    background: rgba(0, 10, 20, 0.6);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.15);
+    padding: 20px 30px;
+}
+
+/* Table styles */
+.score-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+    text-align: center;
+    color: #e0faff;
+    font-size: 1.05rem;
+}
+
+.score-table th {
+    color: #67e8f9;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 16px 10px;
+    border-bottom: 2px solid rgba(0, 255, 255, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+.score-table td {
+    padding: 14px 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition: background 0.3s;
+}
+
+.score-table tbody tr:hover {
+    background: rgba(0, 255, 255, 0.08);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.25);
+    border-radius: 8px;
+}
+
+.score-table tfoot td {
+    padding-top: 16px;
+    border-top: 2px solid rgba(0, 255, 255, 0.4);
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+/* Ngăn chữ xuống dòng */
+.nowrap-cell {
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .score-summary {
+        padding-top: 50px;
+    }
+
+    .score-progress-bar {
+        height: 28px;
+    }
+
+    .score-table th {
+        font-size: 0.85rem;
+    }
+
+    .score-table td {
+        font-size: 0.9rem;
+    }
+}

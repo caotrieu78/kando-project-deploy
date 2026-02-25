@@ -1,0 +1,158 @@
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.container {
+    position: fixed;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    z-index: 50;
+}
+
+.itemGroup {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.periodButton {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 0.75rem;
+    background: rgba(20, 30, 40, 0.8);
+    color: #ccc;
+    font-family: "Orbitron", monospace;
+    font-weight: 600;
+    font-size: 1.2rem;
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.periodButton:hover {
+    border-color: #00ffff;
+    color: #fff;
+}
+
+.active {
+    background: linear-gradient(135deg, #00e5ff, #6a11cb);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.6),
+        0 0 40px rgba(0, 255, 255, 0.3);
+    color: white;
+    border: none;
+}
+
+.tooltip {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    pointer-events: none;
+    margin-right: 1rem;
+    transition: all 0.3s ease;
+}
+
+.itemGroup:hover .tooltip {
+    opacity: 1;
+    margin-right: 1.5rem;
+}
+
+.tooltipBox {
+    background: linear-gradient(90deg, #041827, #10223b);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.25);
+    min-width: max-content;
+}
+
+.tooltipTitle {
+    color: #facc15;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tooltipDates {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    font-family: monospace;
+}
+
+.dateStart {
+    color: #00e5ff;
+}
+
+.dateEnd {
+    color: #b388ff;
+}
+
+.icon {
+    width: 0.8rem;
+    height: 0.8rem;
+    color: #00ffff;
+}
+
+.tooltipArrowOuter {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 8px solid rgba(0, 255, 255, 0.3);
+}
+
+.tooltipArrowInner {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%) translateX(-1px);
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-left: 7px solid #10223b;
+}
+
+.connector {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -1rem;
+    width: 1px;
+    height: 1rem;
+    background: linear-gradient(to bottom, rgba(0, 255, 255, 0.4), transparent);
+}
+
+.backButton {
+    background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(0, 255, 255, 0.05));
+    color: #00e5ff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.backButton:hover {
+    color: #fff;
+    border-color: #00ffff;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+    background: linear-gradient(135deg, rgba(0, 255, 255, 0.25), rgba(0, 255, 255, 0.1));
+}

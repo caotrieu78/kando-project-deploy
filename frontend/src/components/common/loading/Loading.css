@@ -1,0 +1,76 @@
+.kando-loading-screen {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at center, #050a0f 0%, #000 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.container {
+    --uib-size: 120px;
+    --uib-color: #00ffff;
+    --uib-speed: 1.6s;
+    --uib-bg-opacity: 0.1;
+    height: var(--uib-size);
+    width: var(--uib-size);
+    transform-origin: center;
+    overflow: visible;
+}
+
+.car {
+    fill: none;
+    stroke: var(--uib-color);
+    stroke-dasharray: 15, 85;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+    animation: travel var(--uib-speed) linear infinite;
+    will-change: stroke-dasharray, stroke-dashoffset;
+    transition: stroke 0.5s ease;
+    filter: drop-shadow(0 0 8px #00ffff);
+}
+
+.track {
+    stroke: var(--uib-color);
+    opacity: var(--uib-bg-opacity);
+    transition: stroke 0.5s ease;
+}
+
+@keyframes travel {
+    0% {
+        stroke-dashoffset: 0;
+    }
+
+    100% {
+        stroke-dashoffset: -100;
+    }
+}
+
+/* Text neon dưới */
+.loading-text {
+    margin-top: 30px;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: "Orbitron", sans-serif;
+    color: #00ffff;
+    text-shadow: 0 0 8px #00ffff, 0 0 16px #ff00ff;
+    letter-spacing: 2px;
+    animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+
+    0%,
+    100% {
+        opacity: 1;
+        text-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff;
+    }
+
+    50% {
+        opacity: 0.6;
+        text-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff;
+    }
+}
