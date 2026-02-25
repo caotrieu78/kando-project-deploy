@@ -1,4 +1,6 @@
-# Stage 1: Build
+# =========================
+# Stage 1: Build React/Vite
+# =========================
 FROM node:20-alpine AS build
 
 WORKDIR /app
@@ -8,14 +10,13 @@ RUN npm install
 
 COPY . .
 
-# Fix permission chuẩn
-RUN npm rebuild
-
 RUN npm run build
 
 
-# Stage 2: Serve
-FROM nginx:1.25
+# =========================
+# Stage 2: Serve with Nginx
+# =========================
+FROM nginx:1.25-alpine
 
 WORKDIR /usr/share/nginx/html
 
@@ -23,7 +24,15 @@ RUN rm -rf ./*
 
 COPY --from=build /app/dist .
 
-COPY nginx/default.conf /etc/nginx/conf.d/default.conf
+# SPA FIX 404
+RUN printf 'server { \
+    listen 80; \
+    server_name _; \
+    root /usr/share/nginx/html; \
+    index index.html; \
+    location / { try_files $uri $uri/ /index.html; } \
+}' > /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
+
 CMD ["nginx", "-g", "daemon off;"]
