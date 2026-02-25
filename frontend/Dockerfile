@@ -1,20 +1,26 @@
 # =========================
-# Stage 1: Build React/Vite
+# Stage 1: Build
 # =========================
-FROM node:20-alpine AS build
+FROM node:20 AS build
 
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm install
+
+# Cài dependency chuẩn hơn
+RUN npm install --unsafe-perm
 
 COPY . .
 
+# Cấp quyền execute cho bin
+RUN chmod -R 755 node_modules/.bin
+
+# Build
 RUN npm run build
 
 
 # =========================
-# Stage 2: Serve with Nginx
+# Stage 2: Serve
 # =========================
 FROM nginx:1.25-alpine
 
@@ -24,7 +30,7 @@ RUN rm -rf ./*
 
 COPY --from=build /app/dist .
 
-# SPA FIX 404
+# SPA fix
 RUN printf 'server { \
     listen 80; \
     server_name _; \
